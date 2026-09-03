@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <title>Tip calculator app</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet" />
+
+    <style>
+      body {
+        font-family: "Space Mono", monospace;
+      }
+    </style>
+  </head>
+
+  <body class="flex min-h-screen flex-col items-center justify-center bg-[hsl(185,41%,84%)] pt-10 pb-6 px-0 sm:px-4 text-[24px]">
+    <header class="mb-10 sm:mb-20 text-center">
+      <img src="src/assets/images/logo.svg" alt="Logo" />
+    </header>
+
+    <main class="w-full max-w-[920px] rounded-t-3xl sm:rounded-3xl bg-white p-6 sm:p-8 shadow-xl flex flex-col md:flex-row gap-8 sm:gap-12">
+      <section class="w-full md:w-1/2 flex flex-col justify-between gap-8 py-2">
+        <div>
+          <label for="bill" class="block text-sm font-bold text-[hsl(186,14%,43%)] mb-2">Bill</label>
+          <div class="relative flex items-center">
+            <img src="./src/assets/images/icon-dollar.svg" alt="Dollar icon" class="absolute left-4" width="11" height="17" />
+            <input
+              id="bill"
+              type="number"
+              step="any"
+              placeholder="0"
+              class="w-full bg-[hsl(189,47%,97%)] text-[hsl(183,100%,15%)] text-right font-bold text-2xl py-2 px-4 rounded-md border-2 border-transparent focus:border-[hsl(172,67%,45%)] placeholder-[hsl(184,14%,56%)] transition-colors cursor-pointer" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-[hsl(186,14%,43%)] mb-3">Select Tip %</label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <button
+              type="button"
+              class="bg-[hsl(183,100%,15%)] text-white font-bold text-xl py-2 rounded-md hover:bg-[hsl(172,67%,45%)] hover:text-[hsl(183,100%,15%)] transition-colors">
+              5%
+            </button>
+            <button
+              type="button"
+              class="bg-[hsl(183,100%,15%)] text-white font-bold text-xl py-2 rounded-md hover:bg-[hsl(172,67%,45%)] hover:text-[hsl(183,100%,15%)] transition-colors">
+              10%
+            </button>
+            <button
+              type="button"
+              class="bg-[hsl(183,100%,15%)] text-white font-bold text-xl py-2 rounded-md hover:bg-[hsl(172,67%,45%)] hover:text-[hsl(183,100%,15%)] transition-colors">
+              15%
+            </button>
+            <button
+              type="button"
+              class="bg-[hsl(183,100%,15%)] text-white font-bold text-xl py-2 rounded-md hover:bg-[hsl(172,67%,45%)] hover:text-[hsl(183,100%,15%)] transition-colors">
+              25%
+            </button>
+            <button
+              type="button"
+              class="bg-[hsl(183,100%,15%)] text-white font-bold text-xl py-2 rounded-md hover:bg-[hsl(172,67%,45%)] hover:text-[hsl(183,100%,15%)] transition-colors">
+              50%
+            </button>
+            <input
+              type="number"
+              placeholder="Custom"
+              class="bg-[hsl(189,47%,97%)] text-[hsl(183,100%,15%)] placeholder-[hsl(186,14%,43%)] text-right font-bold text-xl py-2 px-3 rounded-md outline-none border-2 border-transparent focus:border-[hsl(172,67%,45%)] transition-colors cursor-pointer" />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label for="people" class="text-sm font-bold text-[hsl(186,14%,43%)]">Number of People</label>
+            <span class="text-sm font-bold text-red-500 hidden" id="error-msg">Can't be zero</span>
+          </div>
+          <div class="relative flex items-center">
+            <img src="./src/assets/images/icon-person.svg" alt="Person icon" class="absolute left-4" width="13" height="16" />
+
+            <input
+              id="people"
+              type="number"
+              placeholder="0"
+              class="w-full bg-[hsl(189,47%,97%)] text-[hsl(183,100%,15%)] text-right font-bold text-2xl py-2 px-4 rounded-md outline-none border-2 border-transparent focus:border-[hsl(172,67%,45%)] placeholder-[hsl(184,14%,56%)] transition-colors cursor-pointer" />
+          </div>
+        </div>
+      </section>
+
+      <aside class="w-full md:w-1/2 bg-[hsl(183,100%,15%)] rounded-2xl p-6 sm:p-10 flex flex-col justify-between gap-8">
+        <div class="space-y-8 pt-2">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-white font-bold text-sm sm:text-base">Tip Amount</p>
+              <p class="text-[hsl(184,14%,56%)] text-xs font-bold">/ person</p>
+            </div>
+            <p class="text-3xl sm:text-5xl font-bold text-[hsl(172,67%,45%)] truncate min-w-0">$0.00</p>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-white font-bold text-sm sm:text-base">Total</p>
+              <p class="text-[hsl(184,14%,56%)] text-xs font-bold">/ person</p>
+            </div>
+            <p class="text-3xl sm:text-5xl font-bold text-[hsl(172,67%,45%)] truncate min-w-0">$0.00</p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="w-full bg-[hsl(172,67%,45%)]/20 text-[hsl(183,100%,15%)] font-bold text-xl py-3 rounded-md uppercase tracking-wider cursor-not-allowed transition-colors hover:bg-[hsl(172,67%,45%)]">
+          Reset
+        </button>
+      </aside>
+    </main>
+
+    <footer class="mt-8 text-center text-xs text-[hsl(186,14%,43%)] font-bold">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="underline hover:text-[hsl(183,100%,15%)]">Frontend Mentor</a>.
+      Coded by <a href="#" class="underline hover:text-[hsl(183,100%,15%)]">Zikra Seid</a>.
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
